@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install: 
+  - docker build -t raju6713/fibonacci-test -f ./client/Dockerfile.dev ./client
+  # - docker build api
+
+scripts:
+  - docker run raju6713/fibonacci-test npm test -- --coverage
+
+after_success:
+  - docker build -t raju6713/multi-fibonacci-client ./client
+  - docker build -t raju6713/multi-fibonacci-ngnix ./ngnix
+  - docker build -t raju6713/multi-fibonacci-worker ./worker
+  - docker build -t raju6713/multi-fibonacci-server ./server
+  # push image to docker hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push raju6713/multi-fibonacci-client
+  - docker push raju6713/multi-fibonacci-ngnix
+  - docker push raju6713/multi-fibonacci-server
+  - docker push raju6713/multi-fibonacci-worker
