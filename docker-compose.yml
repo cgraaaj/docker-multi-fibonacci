@@ -24,7 +24,7 @@
           - REDIS_HOST=$REDIS_HOST
           - REDIS_PORT=$REDIS_PORT
       nginx:
-        image: "raju6713/multi-fibonacci-ngninx"
+        image: "raju6713/multi-fibonacci-nginx"
         mem_limit: 128m
         hostname: nginx
         ports:
