@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import React from 'react'
-import './App.css';
 import {BrowserRouter as Router, Route,Link} from 'react-router-dom'
 
 import OtherPage from './OtherPage';
@@ -11,7 +9,7 @@ function App() {
     <Router>
     <div>
       <header>
-        <h1 className="App-title"> Fib Calculator </h1>
+        <h1> Fib Calculator </h1>
         <Link to="/">Home</Link>
         <Link to="otherPage">OtherPage</Link>
       </header>
